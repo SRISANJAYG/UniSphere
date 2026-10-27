@@ -1,0 +1,144 @@
+/* One continuous universe behind every route. */
+.unisphere-app{isolation:isolate;background:transparent}
+.app-page-shell{position:relative;z-index:1;min-width:0}
+.unisphere-app>header{z-index:50;flex-shrink:0}
+.unisphere-app>div[role=status]{position:relative;z-index:1;flex-shrink:0}
+.app-page-shell>main{animation:page-materialize .55s ease both}
+.ambient-mesh{display:none}
+.sphere-landing{background:transparent}
+.sphere-grid{opacity:.55}
+.sphere-glow{opacity:.65}
+.sphere-ribbon{background:#060d1a60;backdrop-filter:blur(8px)}
+.sphere-features,.sphere-connect{position:relative}
+.sphere-feature{background:linear-gradient(145deg,#14243d85,#07102065);backdrop-filter:blur(8px)}
+.sphere-core{animation:planet-breathe 12s ease-in-out infinite alternate}
+.sphere-core svg{animation:emblem-hover 8s ease-in-out infinite alternate}
+.orbit-node{animation:stellar-pulse 5s ease-in-out infinite alternate}
+.node-two{animation-delay:-2s}.node-three{animation-delay:-4s}
+.glass-panel{background:linear-gradient(135deg,#14223bc2,#0a1125b8);border-color:#9bbbea24;box-shadow:0 24px 65px -24px #000a,inset 0 1px 0 #c5dcff12;backdrop-filter:blur(20px);border-radius:24px}
+.glass-panel::before{background:linear-gradient(90deg,transparent,#93baff70,#b599ed55,transparent);animation:stellar-pulse 7s ease-in-out infinite alternate}
+.glass-card{background:linear-gradient(140deg,#122238c4,#0a1426b5);border-color:#afc8ef20;box-shadow:0 14px 34px -18px #000b,inset 0 1px 0 #d3e2ff09;backdrop-filter:blur(12px);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+@media(hover:hover){.glass-card:hover{transform:translateY(-3px);border-color:#9fc4ff4d;box-shadow:0 18px 48px -18px #000b,0 0 24px -12px #689eff40}.btn-primary:hover{box-shadow:0 0 25px -8px #b4d7ff80;transform:translateY(-2px)}}
+.glass-nav{background:#050b17d9;border-bottom-color:#b3ceff18;backdrop-filter:blur(24px)}
+.input-field{background:#050d1c99;border-color:#a5bde22b;transition:border-color .2s,box-shadow .2s,background .2s}
+.input-field:focus{background:#0d1930d9;border-color:#a0c5ff80;box-shadow:0 0 0 3px #83b6ff12,0 0 24px #638dff0c}
+.btn-primary{background:linear-gradient(120deg,#d9eafa,#a8c7ef);border-color:#e4efff50;box-shadow:0 4px 18px #06163340;transition:transform .2s,box-shadow .2s}
+.btn-secondary{background:#a9c6ed09;border-color:#b8d0f029;backdrop-filter:blur(10px)}
+.nav-pill-item{transition:background .22s,color .22s,transform .22s}
+.nav-pill-item.active{background:linear-gradient(110deg,#5484c12f,#5664a512);border-color:#9abefb35;box-shadow:inset 0 1px 0 #d5e2ff0a,0 5px 24px #08102135}
+.nav-pill-item.active::before{background:#b4d3ff;box-shadow:0 0 14px #9dc5ff70}
+@keyframes page-materialize{from{opacity:0}to{opacity:1}}
+@keyframes planet-breathe{from{box-shadow:inset 3px 3px 25px #7bbee54a,inset -15px -10px 35px #000,0 0 80px #246c9c20}to{box-shadow:inset 3px 3px 25px #7bbee54a,inset -15px -10px 35px #000,0 0 125px #4a80cf45}}
+@keyframes emblem-hover{to{transform:translateY(-7px)}}
+@keyframes stellar-pulse{from{opacity:.45}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.app-page-shell>main,.sphere-core,.sphere-core svg,.orbit-node,.glass-panel::before{animation:none!important}.glass-card,.btn-primary,.btn-secondary,.input-field{transition:none!important}.glass-card:hover,.btn-primary:hover{transform:none}}
+/* Keep text crisp while the canvas repaints behind translucent surfaces. */
+.glass-panel,.glass-card,.glass-nav,.input-field,.btn-secondary,.sphere-ribbon,.sphere-feature{backdrop-filter:none;-webkit-backdrop-filter:none}
+.space-nebula{filter:none}
+.space-motion-toggle{backdrop-filter:none}
+/* A softly rotating planet, with sparse stars around its orbit. */
+.sphere-landing .sphere-core{animation:planet-breathe 12s ease-in-out infinite alternate,sphere-sway 24s ease-in-out infinite alternate;will-change:transform}
+.sphere-landing .sphere-longitude{animation:meridian-spin 32s linear infinite}
+.sphere-landing .sphere-latitude{animation:meridian-spin 32s linear -8s infinite}
+.sphere-landing .ring-one{animation:orbit-sway-one 30s ease-in-out infinite alternate}
+.sphere-landing .ring-two{animation:orbit-sway-two 36s ease-in-out infinite alternate}
+.sphere-landing .ring-three{animation:orbit-sway-three 34s ease-in-out infinite alternate}
+.sphere-sparkles{position:absolute;inset:0;pointer-events:none}
+.sphere-sparkles span{position:absolute;border-radius:50%;background:#d6eaff;box-shadow:0 0 8px #94c5ff80;animation:hero-star-shimmer 5s ease-in-out infinite alternate}
+@keyframes sphere-sway{from{transform:translateY(3px) rotate(-5deg)}to{transform:translateY(-5px) rotate(5deg)}}
+@keyframes meridian-spin{from{transform:rotate(-12deg) rotateY(0deg)}to{transform:rotate(-12deg) rotateY(180deg)}}
+@keyframes orbit-sway-one{from{transform:rotate(-37deg)}to{transform:rotate(-24deg)}}
+@keyframes orbit-sway-two{from{transform:rotate(36deg)}to{transform:rotate(51deg)}}
+@keyframes orbit-sway-three{from{transform:rotate(-38deg) scale(1.13)}to{transform:rotate(-26deg) scale(1.13)}}
+@keyframes hero-star-shimmer{from{opacity:.15;transform:translateY(0) scale(.7)}to{opacity:.8;transform:translateY(-5px) scale(1.1)}}
+html[data-space-motion=paused] .sphere-art *,html[data-space-motion=paused] .sphere-art *::after{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.sphere-landing .sphere-art *,.sphere-landing .sphere-art *::after{animation:none!important;will-change:auto}}
+/* Campus Observatory review: one focal point, quieter supporting motion. */
+.observatory-landing .sphere-grid{opacity:.22}
+.observatory-landing .sphere-glow{opacity:.45}
+.observatory-landing .sphere-core{animation:none;transform:perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transition:transform .7s ease;box-shadow:inset 3px 3px 25px #7bbee53a,inset -15px -10px 35px #000,0 0 90px #246c9c25}
+.observatory-landing .sphere-core svg{animation:none;filter:drop-shadow(0 3px 16px #88c9ef20)}
+.observatory-landing .sphere-longitude,.observatory-landing .sphere-latitude{animation-duration:54s;border-color:#8ac5ed24}
+.observatory-landing .orbit-ring{animation:none;border-color:#8bc9f333;transform:rotate(-28deg)}
+.observatory-landing .ring-two{transform:rotate(44deg);border-color:#7ab9e31c}
+.observatory-landing .ring-one::after{content:'';position:absolute;width:5px;height:5px;border-radius:50%;background:#d1ebff;box-shadow:0 0 12px #a2d4ff99;offset-path:ellipse(50% 50% at 50% 50%);animation:observatory-orbit 32s linear infinite}
+.observatory-landing .sphere-float{animation:observatory-settle .85s ease both;background:linear-gradient(130deg,#112334e8,#08131eec);box-shadow:0 12px 30px #0003;border-color:#a5c7e01f}
+.observatory-landing .float-bottom{animation-delay:.16s}
+.observatory-landing .sphere-sparkles span{box-shadow:0 0 5px #94c5ff40;animation-duration:9s!important}
+.observatory-landing .sphere-hero-content>p{color:#9aacbc;max-width:450px;line-height:1.95}
+.observatory-landing .sphere-note{color:#7c92a5}
+.observatory-landing .sphere-feature{border-radius:12px;background:linear-gradient(140deg,#102134a1,#08111d99);box-shadow:none}
+.observatory-landing .sphere-feature p{font-size:12px;color:#91a6b7}
+.glass-panel::before{animation:none;opacity:.5}
+.glass-card{box-shadow:0 10px 30px -22px #0008;background:linear-gradient(145deg,#102033ed,#0b1526e6)}
+.glass-card:hover{transform:none;box-shadow:0 10px 30px -22px #0008}
+.glass-panel{background:linear-gradient(135deg,#112036ed,#0b1427ed)}
+.space-background canvas{opacity:.62}
+.nebula-violet{opacity:.3}
+.observatory-welcome{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:12px 0 2px}
+.observatory-eyebrow{font-size:9px;letter-spacing:2.2px;font-weight:600;color:#819cb4;margin-bottom:14px}
+.observatory-welcome h1{font-size:clamp(27px,3vw,36px);line-height:1.2;font-weight:600;letter-spacing:-1.3px}
+.observatory-description{color:#8fa2b7;font-size:13px;margin-top:11px}
+.observatory-priorities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.priority-card{display:flex;flex-direction:column;min-height:235px;padding:24px;border:1px solid #adc8ef20;border-radius:16px;background:linear-gradient(140deg,#122036ed,#0b1426ed);text-decoration:none;color:#e4edf7;transition:border-color .2s,background .2s}
+.priority-card:hover{border-color:#a4c8ee55;background:#13233a}
+.priority-assignment{border-color:#97bfe63d;background:linear-gradient(135deg,#1c3449e8,#102036ee)}
+.priority-label{display:flex;align-items:center;gap:10px;color:#a1bcd3;font-size:8px;letter-spacing:1.5px;font-weight:600;margin-bottom:24px}
+.priority-label>svg:last-child{margin-left:auto;color:#66859f}
+.priority-card h2{font-size:18px;font-weight:500;line-height:1.45;letter-spacing:-.4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.priority-card>p{font-size:11px;line-height:1.8;color:#8da3b8;margin:10px 0 24px}
+.priority-footer{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:15px;border-top:1px solid #b5c9e513;font-size:9px;color:#778fa6}
+.priority-footer span{color:#b5cedf}
+.observatory-dashboard .glass-card{border-radius:16px}
+.observatory-dashboard h3{font-size:17px;font-weight:600;letter-spacing:-.4px}
+@keyframes observatory-orbit{to{offset-distance:100%}}
+@keyframes observatory-settle{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+html[data-space-motion=paused] .sphere-art *::before{animation-play-state:paused!important}
+@media(max-width:1100px){.observatory-priorities{grid-template-columns:1fr}.priority-card{min-height:185px}.priority-label{margin-bottom:15px}.priority-card>p{margin-bottom:18px}}
+@media(max-width:640px){.observatory-welcome{align-items:flex-start;flex-direction:column;gap:18px}.observatory-welcome h1{font-size:28px}.priority-card{padding:21px}.observatory-description{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.observatory-landing .sphere-core{transform:none;transition:none}.observatory-landing .ring-one::after,.observatory-landing .sphere-float{animation:none!important}}
+/* One uninterrupted movement: no intermediate stops or direction reversals. */
+.observatory-landing .orbit-arrival{
+  position:absolute;inset:0;pointer-events:none;transform-origin:47% 50%;
+  backface-visibility:hidden;
+  animation:orbit-screen-arrival 2s cubic-bezier(.18,.72,.24,1) both,orbit-arrival-fade .28s ease-out both;
+}
+@keyframes orbit-screen-arrival{
+  from{transform:translate3d(-32vw,-10vh,0) rotate(-220deg) scale(2.65)}
+  to{transform:translate3d(0,0,0) rotate(0deg) scale(1)}
+}
+@keyframes orbit-arrival-fade{from{opacity:0}to{opacity:1}}
+@media(max-width:640px){
+  .observatory-landing .orbit-arrival{animation-name:orbit-screen-arrival-mobile,orbit-arrival-fade}
+  @keyframes orbit-screen-arrival-mobile{
+    from{transform:translate3d(-12vw,-36vh,0) rotate(-220deg) scale(2.55)}
+    to{transform:translate3d(0,0,0) rotate(0deg) scale(1)}
+  }
+}
+@media(prefers-reduced-motion:reduce){.observatory-landing .orbit-arrival{animation:none!important;transform:none;opacity:1}}
+/* The landing surface must let the shared animated sky show through. */
+.sphere-landing.observatory-landing{background:transparent}
+.space-background[data-landing=true] canvas{opacity:.9}
+.observatory-landing button.sphere-core{border:0;padding:0;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.observatory-landing button.sphere-core:focus-visible{outline:2px solid #b9deff;outline-offset:8px}
+/* Rotate the mapped surface, never the round silhouette or its lighting. */
+.observatory-landing .sphere-core.is-spinning{animation:sphere-turn-clock 1s linear;transition:none}
+.sphere-surface-mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none}
+.observatory-landing .sphere-core::before{content:'';position:absolute;inset:0;border-radius:50%;z-index:2;pointer-events:none;background:radial-gradient(circle at 29% 23%,#b8ddff12,transparent 45%),linear-gradient(90deg,transparent 55%,#00040b65);box-shadow:inset -18px -5px 30px #00040b55,inset 2px 1px 12px #a7d5fa12}
+.observatory-landing .sphere-core.is-spinning .sphere-surface-mark{animation:sphere-surface-turn 1s cubic-bezier(.25,.1,.25,1) both}
+.observatory-landing .sphere-core.is-spinning .sphere-longitude{animation:sphere-grid-turn 1s cubic-bezier(.25,.1,.25,1) both}
+.observatory-landing .sphere-core.is-spinning .sphere-latitude{animation:sphere-grid-turn-offset 1s cubic-bezier(.25,.1,.25,1) both}
+/* The mark narrows toward the limb, disappears behind the globe, then returns. */
+@keyframes sphere-surface-turn{
+  0%{transform:translateX(0) scaleX(1);opacity:1}
+  22%{transform:translateX(44%) scaleX(.08);opacity:.35}
+  25%{transform:translateX(48%) scaleX(0);opacity:0}
+  74%{transform:translateX(-48%) scaleX(0);opacity:0}
+  78%{transform:translateX(-44%) scaleX(.08);opacity:.35}
+  100%{transform:translateX(0) scaleX(1);opacity:1}
+}
+@keyframes sphere-grid-turn{from{transform:rotate(-12deg) rotateY(0deg)}to{transform:rotate(-12deg) rotateY(360deg)}}
+@keyframes sphere-grid-turn-offset{from{transform:rotate(-12deg) rotateY(90deg)}to{transform:rotate(-12deg) rotateY(450deg)}}
+/* A timing animation releases the interaction lock after the full revolution. */
+@keyframes sphere-turn-clock{from{outline-color:transparent}to{outline-color:transparent}}
+@media(prefers-reduced-motion:reduce){.observatory-landing .sphere-core.is-spinning{animation:none!important}}

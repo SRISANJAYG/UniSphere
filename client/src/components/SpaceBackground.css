@@ -1,0 +1,12 @@
+.space-background{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#030712}
+.space-background canvas{position:absolute;width:100%;height:100%;inset:0}
+.space-nebula{position:absolute;width:90vw;height:85vh;border-radius:50%;filter:blur(65px);opacity:.65;will-change:transform;animation:nebula-orbit 45s ease-in-out infinite alternate}
+.nebula-blue{left:-28%;top:-25%;background:radial-gradient(ellipse,#133f783d 0%,#16417925 30%,transparent 67%)}
+.nebula-violet{right:-30%;bottom:-25%;background:radial-gradient(ellipse,#4e287043 0%,#24245a2e 35%,transparent 68%);animation-delay:-22s;animation-direction:alternate-reverse}
+.space-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 25%,#02040c55 100%)}
+.space-background[data-still=true] .space-nebula{animation-play-state:paused;will-change:auto}
+.space-motion-toggle{position:fixed;bottom:14px;left:16px;z-index:45;display:flex;align-items:center;gap:8px;border:1px solid #adccf122;background:#07101dd9;color:#8da6c5;border-radius:30px;padding:8px 11px;font:9px 'Plus Jakarta Sans',sans-serif;letter-spacing:.3px;backdrop-filter:blur(12px);cursor:pointer;transition:color .2s,border-color .2s}
+.space-motion-toggle:hover{color:#e1efff;border-color:#adccf166}.space-motion-toggle i{height:4px;width:4px;border-radius:50%;background:#80d9c5;box-shadow:0 0 9px #80d9c580}.space-motion-toggle[aria-pressed=true] i{background:#8290aa;box-shadow:none}.space-motion-toggle:disabled{cursor:default}
+@keyframes nebula-orbit{to{transform:translate(12vw,14vh) scale(1.12)}}
+@media(max-width:767px){.space-motion-toggle{left:auto;right:12px;bottom:12px}.space-motion-toggle span{display:none}.space-nebula{filter:blur(35px)}}
+@media(prefers-reduced-motion:reduce){.space-nebula{animation:none!important}}
