@@ -4,6 +4,12 @@ A university community and academic platform built with React, Vite, Express and
 
 The Campus Observatory interface combines a UniSphere globe, interactive stars, dark ocean blue surfaces, and pale blue accents. The backend uses a straightforward models/routes/controllers structure, with `server/index.js` as its entry point.
 
+## Live website
+
+**[Open UniSphere](https://unisphere-campus.vercel.app)**
+
+Hosted on Vercel with a Render API and MongoDB Atlas. Razorpay remains in test mode; no real charges are made. The live database is separate from the disposable video showcase. Registration, sign-in and session persistence were verified on the deployed website.
+
 ## Project demo video
 
 **[Watch the UniSphere demo on Google Drive](https://drive.google.com/file/d/1-Ef4gs58XdXCOWbjk75B__Ot6uxsasW3/view?usp=sharing)**
