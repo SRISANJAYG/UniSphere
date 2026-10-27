@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -30,18 +30,10 @@ import Settings from "./pages/Settings";
 
 import Notifications from "./pages/Notifications";
 
-import API from "./api/axios";
 
 const AppLayout = () => {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
-  const [demo, setDemo] = useState(false);
-  const [testPaymentsEnabled,setTestPaymentsEnabled]=useState(false);
-  useEffect(() => {
-    API.get("/api/health")
-      .then(({ data }) => {setDemo(data.demo === true);setTestPaymentsEnabled(data.testPaymentsEnabled===true);})
-      .catch(() => {});
-  }, []);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Check if current route is landing, login, or register
@@ -56,14 +48,6 @@ const AppLayout = () => {
       {/* Top Liquid Glass Navbar */}
       <Navbar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
-      {demo && (
-        <div
-          role="status"
-          className="text-center text-xs py-2 px-3 bg-sky-950 text-sky-200 border-b border-sky-800"
-        >
-          Sample data · {testPaymentsEnabled ? "Razorpay test mode · No real charges" : "Checkout unavailable"}
-        </div>
-      )}
       {/* Main App Container */}
       <div className="app-page-shell flex-1 flex">
         {/* Render Sidebar only on authenticated app pages */}
