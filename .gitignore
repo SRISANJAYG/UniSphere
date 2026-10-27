@@ -39,3 +39,6 @@ artifacts/
 *.downloading
 .env.*
 !.env.example
+
+# Generated local showcase access (never publish)
+.demo-access.json

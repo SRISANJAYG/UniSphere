@@ -58,9 +58,9 @@ npm run demo
 
 Then start the frontend normally. This uses a separate temporary MongoDB process, seeds sample content, displays a SHOWCASE DEMO banner and disables payments. It never connects to the configured Atlas database. All demo changes disappear when the process stops. The first run may download MongoDB; the process needs permission to run local executables.
 
-Demo student: `alex@unisphere.edu` / `Student@123`.
-Demo faculty: `vance@unisphere.edu` / `Student@123`.
-The login autofill is available only in this explicit demo.
+The isolated launcher generates a fresh random showcase password each time. Local access details are written to `server/.demo-access.json`, which is ignored by Git. No demonstration credentials or autofill are displayed in the login page.
+
+To test Razorpay with the same disposable data, run `npm run demo:payments`. This opt-in reads only the Razorpay test keys from `server/.env`; it never connects to Atlas. Real payments remain disabled. The ordinary `npm run demo` continues to disable checkout.
 
 For an intentionally seeded persistent development database, set `SEED_DEMO=true` before normal startup. Seeding only happens when there are no users and never in production. Treat all generated records as demonstration fixtures. Leave the flag false for real use. Do not use the demo accounts in production.
 
@@ -84,7 +84,7 @@ Set a valid `rzp_test_...` key and its secret in `server/.env`. Live keys are in
 
 Orders are created server-side and linked to the authenticated student and event. Verification checks ownership, event/order association, a timing-safe HMAC comparison, and Razorpay's captured payment status, amount and currency. Event membership is inserted conditionally so repeated verification does not add duplicate attendees. Unknown or mismatched orders cannot register another student. Pending capture returns a pending response rather than claiming success; the order remains visible in payment history. Cancellation/failure is displayed without claiming registration.
 
-A real Razorpay transaction was not performed during verification. This optional integration still needs a test checkout using your valid credentials. Automated webhook reconciliation, refunds and reserved capacity for simultaneous paid checkout are outside this student implementation. For a payment that remains pending, inspect its status in Razorpay before retrying; contact the event organizer to reconcile a captured payment if verification could not complete.
+A Razorpay test checkout for INR 299 was completed through the mock bank on October 27, 2026. Server verification succeeded, the event registration was confirmed, and Payment Receipts showed VERIFIED. No real money was charged. Automated webhook reconciliation, refunds and reserved capacity for simultaneous paid checkout are outside this student implementation. For a payment that remains pending, inspect its status in Razorpay before retrying; contact the event organizer to reconcile a captured payment if verification could not complete.
 
 ## Verification
 

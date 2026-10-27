@@ -5,6 +5,7 @@ import Club from "../models/club.model.js";
 import Post from "../models/post.model.js";
 import Assignment from "../models/assignment.model.js";
 import bcrypt from "bcryptjs";
+import crypto from "node:crypto";
 
 export const seedDatabase = async () => {
   try {
@@ -19,7 +20,7 @@ export const seedDatabase = async () => {
     );
 
     const salt = await bcrypt.genSalt(10);
-    const demoPassword = await bcrypt.hash("Student@123", salt);
+    const demoPassword = await bcrypt.hash(process.env.DEMO_PASSWORD || crypto.randomBytes(24).toString("base64url"), salt);
 
     // 1. Create Demo Users
     const alex = await User.create({

@@ -36,9 +36,10 @@ const AppLayout = () => {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
   const [demo, setDemo] = useState(false);
+  const [testPaymentsEnabled,setTestPaymentsEnabled]=useState(false);
   useEffect(() => {
     API.get("/api/health")
-      .then(({ data }) => setDemo(data.demo === true))
+      .then(({ data }) => {setDemo(data.demo === true);setTestPaymentsEnabled(data.testPaymentsEnabled===true);})
       .catch(() => {});
   }, []);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -60,7 +61,7 @@ const AppLayout = () => {
           role="status"
           className="text-center text-xs py-2 px-3 bg-sky-950 text-sky-200 border-b border-sky-800"
         >
-          SHOWCASE DEMO · Sample accounts and activity · Test checkout unavailable
+          Sample data · {testPaymentsEnabled ? "Razorpay test mode · No real charges" : "Checkout unavailable"}
         </div>
       )}
       {/* Main App Container */}

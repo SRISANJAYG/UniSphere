@@ -63,6 +63,7 @@ app.get("/api/health", (req, res) => {
     message: "UniSphere server is healthy and operational",
     timestamp: new Date().toISOString(),
     demo: process.env.DEMO_MODE === "true",
+    testPaymentsEnabled: Boolean(process.env.RAZORPAY_KEY_ID?.startsWith("rzp_test_") && process.env.RAZORPAY_KEY_SECRET),
   });
 });
 
