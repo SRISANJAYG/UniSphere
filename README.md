@@ -14,6 +14,12 @@ The recording uses fictional showcase accounts in an isolated database. It does 
 
 ## Run with your database
 
+### Hosting configuration
+
+The frontend deploys from `client` on Vercel. `client/vercel.json` routes `/api/*` to the Render backend and serves React routes through `index.html`, including on refresh. Leave `VITE_API_URL` unset so authentication cookies stay on the website's origin.
+
+The Render backend uses root directory `server`, build command `npm ci --omit=dev`, and start command `npm start`. Set `NODE_ENV=production`, `NODE_VERSION=22`, `MONGO_URI`, a private `JWT_SECRET`, `CLIENT_URL` matching the frontend URL, and the Razorpay test keys in Render's private environment settings. Allow the service's documented outbound IP ranges in Atlas. Demo seeding stays disabled in production. Free Render instances sleep when idle, so the first API request can take longer.
+
 Requires Node.js 22.12+ or a current compatible Node release, npm, and a reachable MongoDB database.
 
 1. In `server`, run `npm install`.
@@ -56,7 +62,7 @@ cd server
 npm run demo
 ```
 
-Then start the frontend normally. This uses a separate temporary MongoDB process, seeds sample content, displays a SHOWCASE DEMO banner and disables payments. It never connects to the configured Atlas database. All demo changes disappear when the process stops. The first run may download MongoDB; the process needs permission to run local executables.
+Then start the frontend normally. This uses a separate temporary MongoDB process, seeds sample content and disables payments. It never connects to the configured Atlas database. All demo changes disappear when the process stops. The first run may download MongoDB; the process needs permission to run local executables.
 
 The isolated launcher generates a fresh random showcase password each time. Local access details are written to `server/.demo-access.json`, which is ignored by Git. No demonstration credentials or autofill are displayed in the login page.
 
